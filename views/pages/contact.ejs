@@ -1,0 +1,20 @@
+<div id="contact" v-cloak>
+  <div class="container-fluid pt-5 pb-5">
+    <h1 class="text-center">Get in touch</h1>
+    <div style="max-width:  650px;" class="mx-auto" v-if="!cloudSuccess">
+      <p class="text-center">Have a question for us?  Maybe some feedback?  We love talking to users about NEW_APP_NAME, and we're happy to answer questions about our pricing, roadmap, or business solutions.  Send us a note and we'll get back to you as soon as possible.</p>
+      <hr/>
+      <ajax-form action="deliverContactFormMessage" :form-errors.sync="formErrors" :form-data="formData" :form-rules="formRules" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm($event)">
+        <div class="form-group">
+          <ajax-button type="submit" :syncing="syncing" class="btn btn-dark btn-lg btn-block">Sync data</ajax-button>
+        </div>
+      </ajax-form>
+    </div>
+    <div style="max-width: 450px;" class="mx-auto text-center" v-else>
+      <p class="text-center">Response data:</p>
+      <hr/>
+      <p>{{responseData}}</p>
+    </div>
+  </div>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
